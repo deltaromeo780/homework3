@@ -9,13 +9,14 @@ def normalize(vector):
     s = v_max - v_min
 
     return (vector - mean) / s
+# normalizacja vektora tak aby średnia wynosiła zero
 
 
 dataset = pd.read_csv("Housing.csv")
 
 y_df = dataset["price"]
 y = np.array([y_df]).T * 1e-6
-
+# zamiana na tablicę dla nupy i wiersz zmieniony na kolumnę transponowaniem
 
 x1_df = dataset["area"]
 x2_df = dataset["bedrooms"]
@@ -29,8 +30,11 @@ x3 = np.array(x3_df)
 x1_norm = normalize(x1)
 x2_norm = normalize(x2)
 x3_norm = normalize(x3)
+# normalizacja danych
 
 m = len(x1)
 x0 = np.ones(m)
+print(x0)
 
 X = np.array([x0, x1_norm, x2_norm, x3_norm]).T
+print(X)
